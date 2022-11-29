@@ -1,10 +1,16 @@
-import ClientDetail from "../client/[id]";
 import ClientData from "../components/ClientData";
 
+
+/**
+ * 
+ * @deprecated
+ */
 export default function ClientDetailContainer(){
     return (
-        <div className="flex flex-col items-center">
-            <ClientData />
+        <div >
+            
         </div>
     )
 }
+
+
