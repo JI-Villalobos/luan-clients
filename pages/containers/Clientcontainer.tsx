@@ -1,11 +1,14 @@
+import { ClientProps } from "../../types";
 import ClientCard from "../components/ClientCard";
 
-export default function ClientContainer(){
+interface Props{
+    clients: ClientProps[] 
+}
+
+export default function ClientContainer({ clients }: Props){
     return (
         <div className='flex flex-col items-center justify-center mt-2'>
-            <ClientCard />
-            <ClientCard />
-            <ClientCard />
+            {clients.map(client => <ClientCard key={`client-${client.ID}`} client={client}/>)}
         </div>
     )
 }
