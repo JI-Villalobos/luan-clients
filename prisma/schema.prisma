@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model clients {
+  ID             Int              @id @default(autoincrement())
+  name           String           @db.VarChar(75)
+  rfc            String           @db.VarChar(18)
+  ver_4_0        Boolean
+  regime         String?          @db.VarChar(150)
+  cp             String?          @db.VarChar(45)
+  sucursal       String           @db.VarChar(50)
+  considerations considerations[]
+  mails          mails[]
+}
+
+model considerations {
+  ID            Int     @id @default(autoincrement())
+  consideration String  @db.VarChar(160)
+  id_client     Int
+  clients       clients @relation(fields: [id_client], references: [ID], onDelete: Cascade, map: "considerations_ibfk_1")
+
+  @@index([id_client], map: "id_client")
+}
+
+model mails {
+  ID        Int     @id @default(autoincrement())
+  mail      String  @db.VarChar(150)
+  id_client Int
+  clients   clients @relation(fields: [id_client], references: [ID], onUpdate: Restrict, map: "mails_ibfk_1")
+
+  @@index([id_client], map: "id_client")
+}
