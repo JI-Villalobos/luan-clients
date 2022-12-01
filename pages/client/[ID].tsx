@@ -1,19 +1,20 @@
 import { GetServerSideProps } from "next";
 import Header from "../components/Header";
 import { prisma } from  "../../lib/index"
-import { ClientProps } from "../../types";
+import { ClientProps, Mails } from "../../types";
 import ClientData from "../components/ClientData";
 
 
 interface Props{
-    client: ClientProps
+    client: ClientProps,
+    mails: Mails[]
 }
 
-export default function ClientDetail({ client }: Props){
+export default function ClientDetail({ client, mails }: Props){
     return(
         <>
             <Header />
-            <ClientData client={client}/>
+            <ClientData client={client} mails={mails}/>
         </>
     )
 }
@@ -23,10 +24,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const client = await prisma.clients.findUnique({
         where: { ID },
     })
-
+    const mails = await prisma.mails.findMany({
+        where: { id_client : ID }
+    })
+    console.log(mails);
+    
     return {
         props: {
             client,
+            mails
         }
     }
 }
