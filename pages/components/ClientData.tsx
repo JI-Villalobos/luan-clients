@@ -1,13 +1,15 @@
 import { useState } from "react"
-import { ClientProps, Mails } from "../../types"
+import { ClientProps, Considerations, Mails } from "../../types"
+import ClientConsiderations from "./ClientConsiderations"
 import MailList from "./MailItem"
 
 interface Props {
   client: ClientProps,
-  mails: Mails[]
+  mails: Mails[],
+  considerations: Considerations[]
 }
 
-export default function ClientData({ client, mails }: Props) {
+export default function ClientData({ client, mails, considerations }: Props) {
   const [displayConsiderations, setDisplayConsiderations] = useState(false)
 
   return (
@@ -58,7 +60,15 @@ export default function ClientData({ client, mails }: Props) {
           </dl>
         </div>
         <div className="flex justify-center m-3">
-          <button className="mt-2 w-80 text-sm text-white bg-indigo-600 rounded ">Ver consideraciones</button>
+          <button 
+            className="mt-2 w-80 text-sm text-white bg-indigo-600 rounded "
+            onClick={() => setDisplayConsiderations(!displayConsiderations)}  
+          >
+            {displayConsiderations ? 'Cerrar' : 'Ver consideraciones'}
+          </button>
+        </div>
+        <div className={displayConsiderations ? '' : 'hidden'}>
+              <ClientConsiderations considerations={considerations}/>
         </div>
       </div>
     </div>
