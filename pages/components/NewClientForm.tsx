@@ -25,17 +25,17 @@ export default function NewClientForm() {
 																		<div className="grid grid-cols-6 gap-6">
 																				<div className="col-span-6 sm:col-span-3">
 																						<label className="block text-sm font-medium text-gray-700">Nombre/Razon Social</label>
-																						<input type="text" name="razon" id="razon" className="mt-1 block w-full rounded-md border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+																						<input type="text" name="razon" id="razon" className="mt-1 block w-full rounded-md border border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
 																				</div>
 
 																				<div className="col-span-6 sm:col-span-3">
 																						<label className="block text-sm font-medium text-gray-700">RFC</label>
-																						<input type="text" name="rfc" id="razon" className="mt-1 block w-full rounded-md border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+																						<input type="text" name="rfc" id="razon" className="mt-1 block border w-full rounded-md border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
 																				</div>
 
 																				<div className="col-span-6 sm:col-span-4">
 																						<label className="block text-sm font-medium text-gray-700">Email address</label>
-																						<input type="text" name="email-address" id="email-address" className="mt-1 block w-full rounded-md border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+																						<input type="text" name="email-address" id="email-address" className="mt-1 block border w-full rounded-md border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
 																				</div>
 
 																				<div className="col-span-6 sm:col-span-3">
@@ -57,11 +57,11 @@ export default function NewClientForm() {
 
 																				<div className="col-span-6">
 																						<label className="block text-sm font-medium text-gray-700">Régimen Fiscal</label>
-																						<input type="text" name="regimen" id="regimen" className="mt-1 block w-full rounded-md border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+																						<input type="text" name="regimen" id="regimen" className="mt-1 text-center text-indigo-600 block w-4/5 rounded-md border border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
 																				</div>
 																				<div className="col-span-6 sm:col-span-3 lg:col-span-2">
 																						<label className="block text-sm font-medium text-gray-700">ZIP / Código postal</label>
-																						<input type="text" name="postal-code" id="postal-code" className="mt-1 block w-full rounded-md border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+																						<input type="text" name="postal-code" id="postal-code" className="mt-1 text-center text-indigo-600 block w-full rounded-md border  border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
 																				</div>
 																		</div>
 																</div>
