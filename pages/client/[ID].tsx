@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { prisma } from  "../../lib/index"
 import { ClientProps, Considerations, Mails } from "../../types";
 import ClientData from "../components/ClientData";
+import BackHome from "../components/BackHome";
 
 
 interface Props{
@@ -15,6 +16,7 @@ export default function ClientDetail({ client, mails, considerations }: Props){
     return(
         <>
             <Header />
+            <BackHome />
             <ClientData client={client} mails={mails} considerations={considerations}/>
         </>
     )
