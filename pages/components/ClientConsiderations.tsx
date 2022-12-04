@@ -27,7 +27,7 @@ export default function ClientConsiderations({ considerations }: Props) {
               <tbody className="text-sm divide-y divide-gray-100">
                 {
                   considerations.map(consideration => (
-                    <tr>
+                    <tr key={`consideration-id-${consideration.ID}`}>
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="font-medium text-gray-800">○</div>

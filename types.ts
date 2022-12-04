@@ -21,3 +21,5 @@ export interface Mails{
   mail: string,
   id_client: number
 }
+
+export interface ClientDto extends Omit<ClientProps, "considerations" | "mails" | "ID">{}
