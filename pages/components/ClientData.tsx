@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import { useState } from "react"
 import { ClientProps, Considerations, Mails } from "../../types"
 import ClientConsiderations from "./ClientConsiderations"
@@ -11,6 +12,7 @@ interface Props {
 
 export default function ClientData({ client, mails, considerations }: Props) {
   const [displayConsiderations, setDisplayConsiderations] = useState(false)
+  const router = useRouter()
 
   return (
     <div className="flex flex-col items-center">
@@ -52,6 +54,12 @@ export default function ClientData({ client, mails, considerations }: Props) {
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Dirección(es) email</dt>
               <MailList mails={mails}/>
+              <button 
+                className="bg-indigo-600 text-white w-2/5 h-5 self-center border-none text-xs rounded"
+                onClick={() => router.push(`mail/${client.rfc}/${client.ID}`)}
+              >
+                +Mail
+              </button>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Sucursal</dt>

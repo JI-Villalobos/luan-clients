@@ -1,10 +1,8 @@
-import { useRouter } from "next/router"
-import { env } from "process"
 import React, { useState } from "react"
 import Spinner from "./Spinner"
 
 export default function NewClientForm() {	
-	const [requestStatus, setRequeststatus] = useState({
+	const [requestStatus, setRequestStatus] = useState({
 		onError: false,
 		onSuccess: false,
 		onLoading: false
@@ -15,10 +13,9 @@ export default function NewClientForm() {
 	const [ver_4_0, setVer_4_0] = useState(false)
 	const [regime, setRegime] = useState('No Disponible')
 	const [cp, setCP] = useState('No Disponible')
-	const router = useRouter()
 
 	const createClient = async () => {
-		setRequeststatus({
+		setRequestStatus({
 			onError: false,
 			onLoading: true,
 			onSuccess: false
@@ -31,21 +28,19 @@ export default function NewClientForm() {
 				body: JSON.stringify(body)
 			}).then(res => {
 				console.log(res)
-				setRequeststatus({
+				setRequestStatus({
 					onError: false,
 					onLoading: false,
 					onSuccess: true
 				})
-				router.push('/addmail')
 			})
 		} catch (error) {
-			setRequeststatus({
+			setRequestStatus({
 				onError: true,
 				onLoading: false,
 				onSuccess: false
 			})
 			console.log(error);
-
 		}
 	}
 	return (

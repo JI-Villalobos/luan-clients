@@ -13,8 +13,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
       regime: regime,
       cp: cp,
     }
-  })
-  console.log(result);
-  
+  })  
   res.json(result)
 }
