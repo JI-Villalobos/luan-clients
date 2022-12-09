@@ -11,6 +11,7 @@ export default function ClientConsiderations({ considerations }: Props) {
         <header className="px-5 py-4 border-b border-gray-100">
           <h2 className="font-semibold text-gray-800">Consideraciones</h2>
         </header>
+        <button className="rounded border h-8 ml-5 border-indigo-400 bg-indigo-600 text-white text-xs">+Consideración</button>
         <div className="p-3">
           <div className="overflow-x-auto">
             <table className="table-auto w-full">
