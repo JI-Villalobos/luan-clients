@@ -76,7 +76,7 @@ export default function ClientData({ client, mails, considerations }: Props) {
           </button>
         </div>
         <div className={displayConsiderations ? '' : 'hidden'}>
-              <ClientConsiderations considerations={considerations}/>
+              <ClientConsiderations considerations={considerations} rfc={client.rfc} id={client.ID}/>
         </div>
       </div>
     </div>

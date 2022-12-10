@@ -1,17 +1,27 @@
+import { useRouter } from "next/router"
 import { Considerations } from "../../types"
 
 interface Props {
-  considerations: Considerations[]
+  considerations: Considerations[],
+  rfc: string,
+  id: number
 }
 
-export default function ClientConsiderations({ considerations }: Props) {
+export default function ClientConsiderations({ considerations, rfc, id }: Props) {
+  const router = useRouter()
+
   return (
     <div className="flex flex-col justify-center h-full mb-5">
       <div className="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
         <header className="px-5 py-4 border-b border-gray-100">
           <h2 className="font-semibold text-gray-800">Consideraciones</h2>
         </header>
-        <button className="rounded border h-8 ml-5 border-indigo-400 bg-indigo-600 text-white text-xs">+Consideración</button>
+        <button 
+          className="rounded border h-8 ml-5 border-indigo-400 bg-indigo-600 text-white text-xs"
+          onClick={() =>router.push(`/client/considerations/${rfc}/${id}`)}  
+        >
+          +Consideración
+        </button>
         <div className="p-3">
           <div className="overflow-x-auto">
             <table className="table-auto w-full">
