@@ -1,7 +1,9 @@
+import { useRouter } from "next/router"
 import React, { useState } from "react"
 import Spinner from "./Spinner"
 
-export default function NewClientForm() {	
+export default function NewClientForm() {
+	const router = useRouter()
 	const [requestStatus, setRequestStatus] = useState({
 		onError: false,
 		onSuccess: false,
@@ -21,7 +23,7 @@ export default function NewClientForm() {
 			onSuccess: false
 		})
 		try {
-			const body = { name, rfc, ver_4_0, sucursal, regime, cp}
+			const body = { name, rfc, ver_4_0, sucursal, regime, cp }
 			await fetch(`/api/create`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -33,6 +35,7 @@ export default function NewClientForm() {
 					onLoading: false,
 					onSuccess: true
 				})
+				router.push('/')
 			})
 		} catch (error) {
 			setRequestStatus({
@@ -105,23 +108,37 @@ export default function NewClientForm() {
 											</label>
 										</div>
 										<div className="col-span-6">
-											<label className="block text-sm font-medium text-gray-700">Régimen Fiscal</label>
+											<label
+												className={
+													ver_4_0 ? 'block text-sm font-medium text-gray-700'
+														: 'block text-sm font-medium text-gray-400'
+												}
+											>Régimen Fiscal</label>
 											<input
 												type="text"
 												name="regimen"
 												id="regimen"
 												className="mt-1 text-center text-indigo-600 block w-4/5 rounded-md border border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
 												onChange={(e) => setRegime(e.target.value)}
+												disabled={!ver_4_0}
 											/>
 										</div>
 										<div className="col-span-6 sm:col-span-3 lg:col-span-2">
-											<label className="block text-sm font-medium text-gray-700">ZIP / Código postal</label>
+											<label
+												className={
+													ver_4_0 ? 'block text-sm font-medium text-gray-700'
+														: 'block text-sm font-medium text-gray-400'
+												}
+											>
+												ZIP / Código postal
+											</label>
 											<input
 												type="text"
 												name="postal-code"
 												id="postal-code"
 												className="mt-1 text-center text-indigo-600 block w-full rounded-md border  border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
 												onChange={(e) => setCP(e.target.value)}
+												disabled={!ver_4_0}
 											/>
 										</div>
 									</div>
