@@ -1,8 +1,9 @@
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import { ClientProps, Considerations, Mails } from "../../types"
+import { CopyToClipboard } from "react-copy-to-clipboard"
 import ClientConsiderations from "./ClientConsiderations"
-import MailList from "./MailItem"
+import MailList from "./MailList"
 
 interface Props {
   client: ClientProps,
@@ -12,7 +13,17 @@ interface Props {
 
 export default function ClientData({ client, mails, considerations }: Props) {
   const [displayConsiderations, setDisplayConsiderations] = useState(false)
+  const [copiedName, setCopiedName] = useState(false)
+  const [copiedR, setCopiedR] = useState(false)
   const router = useRouter()
+
+
+  const temporalCopiedState = (state: Dispatch<SetStateAction<boolean>>) => {
+    state(true)
+    setTimeout(() => {
+      state(false)
+    }, 1000)
+  }
 
   return (
     <div className="flex flex-col items-center">
@@ -33,14 +44,42 @@ export default function ClientData({ client, mails, considerations }: Props) {
               <dt className="text-sm font-medium text-gray-500">Nombre completo/Razon</dt>
               <div className="flex">
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{client.name}</dd>
-                <button className=" ml-1 w-10 rounded bg-indigo-600 text-white text-xs">Copy</button>
+                <CopyToClipboard
+                  text={client.name}
+                  onCopy={() => temporalCopiedState(setCopiedName)}
+                >
+                  <button
+                    className={
+                      copiedName ? 'ml-1 w-10 rounded bg-green-700 text-white text-xs'
+                        : 'ml-1 w-10 rounded bg-indigo-600 text-white text-xs'
+                    }
+                  >
+                    {
+                      copiedName ? 'Copied' : 'Copy'
+                    }
+                  </button>
+                </CopyToClipboard>
               </div>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">RFC</dt>
               <div className="flex">
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{client.rfc}</dd>
-                <button className=" ml-1 w-10 rounded bg-indigo-600 text-white text-xs">Copy</button>
+                <CopyToClipboard 
+                  text={client.rfc}
+                  onCopy={() => temporalCopiedState(setCopiedR)}  
+                >
+                  <button 
+                    className={
+                      copiedR ? 'ml-1 w-10 rounded bg-green-700 text-white text-xs'
+                      : 'ml-1 w-10 rounded bg-indigo-600 text-white text-xs'
+                    }
+                  >
+                    {
+                      copiedR ? 'Copied' : 'Copy'
+                    }
+                  </button>
+                </CopyToClipboard>
               </div>
             </div>
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -53,8 +92,8 @@ export default function ClientData({ client, mails, considerations }: Props) {
             </div>
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Dirección(es) email</dt>
-              <MailList mails={mails}/>
-              <button 
+              <MailList mails={mails} />
+              <button
                 className="bg-indigo-600 text-white w-2/5 h-5 self-center border-none text-xs rounded"
                 onClick={() => router.push(`mail/${client.rfc}/${client.ID}`)}
               >
@@ -68,15 +107,15 @@ export default function ClientData({ client, mails, considerations }: Props) {
           </dl>
         </div>
         <div className="flex justify-center m-3">
-          <button 
+          <button
             className="mt-2 w-80 text-sm text-white bg-indigo-600 rounded "
-            onClick={() => setDisplayConsiderations(!displayConsiderations)}  
+            onClick={() => setDisplayConsiderations(!displayConsiderations)}
           >
             {displayConsiderations ? 'Cerrar' : 'Ver consideraciones'}
           </button>
         </div>
         <div className={displayConsiderations ? '' : 'hidden'}>
-              <ClientConsiderations considerations={considerations} rfc={client.rfc} id={client.ID}/>
+          <ClientConsiderations considerations={considerations} rfc={client.rfc} id={client.ID} />
         </div>
       </div>
     </div>
