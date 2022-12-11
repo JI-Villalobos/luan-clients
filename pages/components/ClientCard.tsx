@@ -1,7 +1,8 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ClientProps } from '../../types'
 
-interface Client{
+interface Client {
     client: ClientProps
 }
 
@@ -16,6 +17,13 @@ export default function ClientCard({ client }: Client) {
                     <div className="mt-2 flex items-center text-sm text-gray-500 mb-1">
                         RFC: {client.rfc}
                     </div>
+                    {
+                        !client.ver_4_0 && (
+                            <Link href={`/upgrade/${client.ID}`} className='text-indigo-600'>
+                                Actualizar a 4.0
+                            </Link>
+                        )
+                    }
                 </div>
             </div>
             <div className="flex lg:mt-0 lg:ml-2">
