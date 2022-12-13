@@ -8,7 +8,7 @@ This example with Prisma and Nextjs, uses MySQL as database, the DB basic schema
 ### 1. Clone this repository
 
 ```bash
-git clone 
+git clone git@github.com:JI-Villalobos/luan-clients.git
 ```
 install repositories
 ```bash
