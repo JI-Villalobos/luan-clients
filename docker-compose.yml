@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    environment:
+      DATABASE_URL: "mysql://fmipuebl_desarrollo:10144149MYTEST@fmipueblito.com:3306/fmipuebl_other_carlos_clients?useSSL=false"
+    ports:
+      - "3000:3000"
+    volumes:
+      - /usr/src/node_modules
+      - .:/usr/src
+         

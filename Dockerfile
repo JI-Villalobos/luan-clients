@@ -6,8 +6,10 @@ WORKDIR /usr/src
 
 RUN yarn install
 
-EXPOSE 3000
+#ENV DATABASE_URL="mysql://fmipuebl_desarrollo:10144149MYTEST@fmipueblito.com:3306/fmipuebl_other_carlos_clients?useSSL=false"
 
-VOLUME [ "/usr/src", ]
+#EXPOSE 3000
+
+#VOLUME [ "/usr/src", ]
 
 CMD ["yarn", "dev"]
