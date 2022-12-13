@@ -2,7 +2,7 @@
 
 This example with Prisma and Nextjs, uses MySQL as database, the DB basic schema is defined bellow:
 
-![db schema](./public//schema.png)
+![db schema](./public/schema.png)
 
 ## Getting started
 ### 1. Clone this repository
