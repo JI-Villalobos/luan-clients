@@ -1,34 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fullstack Example with Prisma.js And Next.js
 
-## Getting Started
+This example with Prisma and Nextjs, uses MySQL as database, the DB basic schema is defined bellow:
 
-First, run the development server:
+![db schema](./public//schema.png)
+
+## Getting started
+### 1. Clone this repository
 
 ```bash
-npm run dev
-# or
-yarn dev
+git clone 
+```
+install repositories
+```bash
+yarn install  
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Set Database ```url```  as environment variable
+create the ```.env``` file at the root level:
+```bash
+touch .env
+```
+Define your environment variable
+```code
+DATABASE_URL="mysql://user:password@localhost:3306/db_name"
+```
+ 
+### 3. Create the database
+The prisma ```migration.sql```  on [`./prisma/migrations/safe/migration.sql`](./prisma/migrations/safe/migration.sql) contains the query instructions to create all the db tables
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### 4. Start the app
+```bash
+yarn dev
+``` 
+Navigate to [`http://localhost:3000/`](http://localhost:3000/) in your browser.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Usage with Docker
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Make sure to replace the url database in the ```docker-compose.yml``` file.
+```yml
+services:
+  app:
+    build: .
+    environment:
+      DATABASE_URL: "mysql://user:password@localhost:3306/db_name"
+```
 
-## Learn More
+Build and run with docker compose 
+```bash
+docker compose up -d --build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[MIT](https://choosealicense.com/licenses/mit/)
