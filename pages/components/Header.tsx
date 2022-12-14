@@ -24,7 +24,7 @@ export default function Header() {
                         <nav className="hidden space-x-10 md:flex">
                             <a href="https://www.jjvconsultores.com.mx/" className="text-base font-medium text-gray-500 hover:text-gray-900">JJV Consultores</a>
                             <a href="https://github.com/JI-Villalobos/luan-clients" className="text-base font-medium text-gray-500 hover:text-gray-900">GitHub</a>
-                            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">Documentación</a>
+                            <a href="https://detailed-emmental-186.notion.site/Clientes-Purificadora-Luan-fba2dac4bcef49fb87e737f72df2957f" className="text-base font-medium text-gray-500 hover:text-gray-900">Documentación</a>
                         </nav>
                         <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
                             <a href="#" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Soporte</a>
