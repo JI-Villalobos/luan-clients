@@ -22,12 +22,8 @@ export default function Header() {
                             </button>
                         </div>
                         <nav className="hidden space-x-10 md:flex">
-                            <div className="relative">
-                                <button type="button" className="text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" aria-expanded="false">
-                                    <span>JJV Consultores</span>
-                                </button>
-                            </div>
-                            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">GitHub</a>
+                            <a href="https://www.jjvconsultores.com.mx/" className="text-base font-medium text-gray-500 hover:text-gray-900">JJV Consultores</a>
+                            <a href="https://github.com/JI-Villalobos/luan-clients" className="text-base font-medium text-gray-500 hover:text-gray-900">GitHub</a>
                             <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">Documentación</a>
                         </nav>
                         <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
