@@ -19,7 +19,7 @@ export default function ClientCard({ client }: Client) {
                     </div>
                     {
                         !client?.ver_4_0 && (
-                            <Link href={`/upgrade/${client.ID}`} className='text-indigo-600'>
+                            <Link href={`/upgrade/${client?.ID}`} className='text-indigo-600'>
                                 Actualizar a 4.0
                             </Link>
                         )
@@ -29,7 +29,7 @@ export default function ClientCard({ client }: Client) {
             <div className="flex lg:mt-0 lg:ml-2">
                 <span className="hidden sm:block">
                     <button type="button" className="w-20  mr-2 mb-2 items-center rounded-md border  bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        onClick={() => router.push(`/client/${client.ID}`)}
+                        onClick={() => router.push(`/client/${client?.ID}`)}
                     >
                         Detalles
                     </button>

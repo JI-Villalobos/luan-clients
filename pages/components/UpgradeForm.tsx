@@ -88,7 +88,7 @@ export default function UpgradeForm({ client }: Props) {
                               name="name"
                               id="name"
                               readOnly
-                              value={client.name}
+                              value={client?.name}
                               className="mt-1 block w-full rounded-md text-gray-500 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
                           </div>
                           <div className="col-span-6 sm:col-span-4">
@@ -96,7 +96,7 @@ export default function UpgradeForm({ client }: Props) {
                             <input
                               type="text"
                               name="rfc"
-                              readOnly value={client.rfc}
+                              readOnly value={client?.rfc}
                               id="rfc"
                               className="mt-1 block w-full rounded-md text-gray-500 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
                           </div>
