@@ -12,7 +12,7 @@ export default function ClientCard({ client }: Client) {
     return (
         <div className="w-3/5 lg:flex lg:items-center lg:justify-center m-3 rounded shadow-lg">
             <div className="min-w-0 w-2/5">
-                <h2 className="text-xl font-bold leading-7 text-indigo-600 sm:truncate sm:text-2xl sm:tracking-tight">{client.name}</h2>
+                <h2 className="text-xl font-bold leading-7 text-indigo-600 sm:truncate sm:text-2xl sm:tracking-tight">{client?.name}</h2>
                 <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6 items-center">
                     <div className="mt-2 flex items-center text-sm text-gray-500 mb-1">
                         RFC: {client.rfc}
