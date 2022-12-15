@@ -64,9 +64,9 @@ export default function ClientData({ client, mails, considerations }: Props) {
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">RFC</dt>
               <div className="flex">
-                <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{client.rfc}</dd>
+                <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{client?.rfc}</dd>
                 <CopyToClipboard 
-                  text={client.rfc}
+                  text={client?.rfc}
                   onCopy={() => temporalCopiedState(setCopiedR)}  
                 >
                   <button 
@@ -84,11 +84,11 @@ export default function ClientData({ client, mails, considerations }: Props) {
             </div>
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Régimen Fiscal</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{client.regime}</dd>
+              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{client?.regime}</dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">CP Cliente</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{client.cp}</dd>
+              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{client?.cp}</dd>
             </div>
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Dirección(es) email</dt>
@@ -102,7 +102,7 @@ export default function ClientData({ client, mails, considerations }: Props) {
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Sucursal</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{client.sucursal}</dd>
+              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{client?.sucursal}</dd>
             </div>
           </dl>
         </div>
@@ -115,7 +115,7 @@ export default function ClientData({ client, mails, considerations }: Props) {
           </button>
         </div>
         <div className={displayConsiderations ? '' : 'hidden'}>
-          <ClientConsiderations considerations={considerations} rfc={client.rfc} id={client.ID} />
+          <ClientConsiderations considerations={considerations} rfc={client?.rfc} id={client?.ID} />
         </div>
       </div>
     </div>

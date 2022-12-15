@@ -31,7 +31,7 @@ export default function MailItem({ mail }: Props) {
           { copied ? 'Copied' : 'Copy' }
         </button>
       </CopyToClipboard>
-      <input type="text" readOnly className=" w-full flex-1 text-center text-indigo-600 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" defaultValue={mail.mail} />
+      <input type="text" readOnly className=" w-full flex-1 text-center text-indigo-600 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" defaultValue={mail?.mail} />
     </div>
   )
 }
