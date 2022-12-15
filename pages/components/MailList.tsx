@@ -8,7 +8,7 @@ interface Props {
 export default function MailList({ mails }: Props) {
   return (
     <div className="flex flex-col rounded-md shadow-sm">
-      {mails.map(mail => (
+      {mails?.map(mail => (
         <MailItem mail={mail} key={`mail-id-${mail.ID}`}/>
       ))}
     </div>

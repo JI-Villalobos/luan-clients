@@ -19,7 +19,7 @@ export default function MailItem({ mail }: Props) {
   return (
     <div className="m-1 flex" key={`mail-is-${mail.ID}`}>
       <CopyToClipboard 
-        text={mail.mail}
+        text={mail?.mail}
         onCopy={() => onCopied()}
       >
         <button 

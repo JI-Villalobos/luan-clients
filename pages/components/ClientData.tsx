@@ -45,7 +45,7 @@ export default function ClientData({ client, mails, considerations }: Props) {
               <div className="flex">
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{client.name}</dd>
                 <CopyToClipboard
-                  text={client.name}
+                  text={client?.name}
                   onCopy={() => temporalCopiedState(setCopiedName)}
                 >
                   <button

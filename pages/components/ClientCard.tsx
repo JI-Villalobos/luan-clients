@@ -15,10 +15,10 @@ export default function ClientCard({ client }: Client) {
                 <h2 className="text-xl font-bold leading-7 text-indigo-600 sm:truncate sm:text-2xl sm:tracking-tight">{client?.name}</h2>
                 <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6 items-center">
                     <div className="mt-2 flex items-center text-sm text-gray-500 mb-1">
-                        RFC: {client.rfc}
+                        RFC: {client?.rfc}
                     </div>
                     {
-                        !client.ver_4_0 && (
+                        !client?.ver_4_0 && (
                             <Link href={`/upgrade/${client.ID}`} className='text-indigo-600'>
                                 Actualizar a 4.0
                             </Link>
