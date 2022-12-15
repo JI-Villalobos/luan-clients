@@ -37,7 +37,7 @@ export default function ClientConsiderations({ considerations, rfc, id }: Props)
               </thead>
               <tbody className="text-sm divide-y divide-gray-100">
                 {
-                  considerations?.map  (consideration => (
+                  considerations.map  (consideration => (
                     <tr key={`consideration-id-${consideration.ID}`}>
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
