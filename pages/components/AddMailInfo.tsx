@@ -1,12 +1,14 @@
+import BackHome from "./BackHome"
+
 interface Props{
   rfc: string
 }
 
 export default function AddMailInfo({ rfc }: Props) {
-
   return (
     <div className="bg-white py-3 sm:py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <BackHome />        
         <div className="sm:text-center">
           <h2 className="text-lg font-semibold leading-8 text-indigo-600">{rfc}</h2>
           <h3 className="text-lg font-semibold leading-8 text-indigo-600">Añade nuevos Emails</h3>
