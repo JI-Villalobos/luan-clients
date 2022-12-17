@@ -10,6 +10,7 @@ interface Props {
 export default function UpgradeForm({ client }: Props) {
   const [regime, setRegime] = useState('')
   const [cp, setCP] = useState('')
+  const [name, setName] = useState(client.name)
   const router = useRouter()
   const [requestStatus, setRequestStatus] = useState({
     onError: false,
@@ -26,7 +27,7 @@ export default function UpgradeForm({ client }: Props) {
     })
     try {
       const body = {
-        name: client.name,
+        name,
         rfc: client.rfc,
         ver_4_0: true,
         sucursal: client.sucursal,
@@ -87,9 +88,10 @@ export default function UpgradeForm({ client }: Props) {
                               type="text"
                               name="name"
                               id="name"
-                              readOnly
-                              value={client?.name}
-                              className="mt-1 block w-full rounded-md text-gray-500 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                              defaultValue={client?.name}
+                              className="mt-1 block w-full rounded-md text-gray-500 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" 
+                              onChange={(e) => setName(e.target.value)}
+                            />
                           </div>
                           <div className="col-span-6 sm:col-span-4">
                             <label className="block text-sm font-medium text-gray-700">RFC</label>
