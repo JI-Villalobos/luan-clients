@@ -10,7 +10,7 @@ interface Props {
 export default function UpgradeForm({ client }: Props) {
   const [regime, setRegime] = useState('')
   const [cp, setCP] = useState('')
-  const [name, setName] = useState(client.name)
+  const [name, setName] = useState(client?.name)
   const router = useRouter()
   const [requestStatus, setRequestStatus] = useState({
     onError: false,
