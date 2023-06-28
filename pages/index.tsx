@@ -12,6 +12,7 @@ export default function Home({ clients }: Props) {
   return (
     <>
       <Header />
+      <p className='text-indigo-600 font-bold text-center m-6 underline'>Presiona Ctrl + F para buscar🔎</p>
       <ClientContainer clients={clients}/>
     </>
   )
