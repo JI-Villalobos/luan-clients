@@ -15,6 +15,7 @@ model clients {
   regime         String?          @db.VarChar(150)
   cp             String?          @db.VarChar(45)
   sucursal       String           @db.VarChar(50)
+  bills          bills[]
   considerations considerations[]
   mails          mails[]
 }
@@ -33,6 +34,20 @@ model mails {
   mail      String  @db.VarChar(150)
   id_client Int
   clients   clients @relation(fields: [id_client], references: [ID], onUpdate: Restrict, map: "mails_ibfk_1")
+
+  @@index([id_client], map: "id_client")
+}
+
+model bills {
+  id          Int     @id @default(autoincrement())
+  client      String  @db.VarChar(250)
+  id_client   Int
+  bill_number Int
+  amount      Int
+  is_paid     Boolean
+  uuid        String  @db.VarChar(64)
+  uuid_compl  String? @db.VarChar(64)
+  clients     clients @relation(fields: [id_client], references: [ID], onDelete: Cascade, map: "bills_ibfk_1")
 
   @@index([id_client], map: "id_client")
 }
