@@ -23,3 +23,15 @@ export interface Mails{
 }
 
 export interface ClientDto extends Omit<ClientProps, "considerations" | "mails" | "ID">{}
+
+export interface BillAsset{
+  id: number
+  client: string
+  id_client: number
+  bill_number: number
+  amount: number
+  is_paid: boolean
+  uuid: string
+  uuid_compl: string | null
+}
+
