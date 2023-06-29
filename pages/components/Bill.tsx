@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { BillAsset } from "../../types"
 
 type Props = {
@@ -32,10 +33,13 @@ export default function Bill({ bill }: Props) {
                 </div>
               </div>
             )
-              : (<button type="button" className="w-20  mr-2 mb-2 items-center rounded-md border  bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                Pagar
-              </button>)
+              : (
+                <Link href={`bill/${bill.id}`}>
+                  <button type="button" className="w-20  mr-2 mb-2 items-center rounded-md border  bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  >
+                    Pagar
+                  </button>
+                </Link>)
           }
         </span>
       </div>
