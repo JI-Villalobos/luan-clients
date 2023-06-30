@@ -3,6 +3,7 @@ import { BillAsset } from "../../types";
 import Header from "../components/Header";
 import PaymentForm from "../components/PaymentForm";
 import { prisma } from "../../lib";
+import BackHome from "../components/BackHome";
 
 interface Props {
   bill: BillAsset
@@ -12,6 +13,7 @@ export default function PaymentBill({ bill }: Props) {
   return (
     <>
       <Header />
+      <BackHome />
       <PaymentForm bill={bill}/>
     </>
   )

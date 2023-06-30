@@ -3,6 +3,7 @@ import { ClientProps } from "../../types";
 import Header from "../components/Header";
 import { prisma } from "../../lib";
 import NewBillForm from "../components/NewBillForm";
+import BackHome from "../components/BackHome";
 
 interface Props {
   client: ClientProps
@@ -12,6 +13,7 @@ export default function NewBill({ client }: Props) {
   return (
     <>
       <Header />
+      <BackHome />
       <NewBillForm client={client}/>
     </>
   )
