@@ -29,7 +29,7 @@ export default function NewBillForm({ client }: Props) {
       setstatus({...status, onLoading: false})
       router.push('/')
     }).catch((e) => {
-      setstatus({...status, onLoading: false, onError: true})
+      setstatus({onLoading: false, onError: true})
       console.log(e);
     })
     

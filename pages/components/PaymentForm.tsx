@@ -1,13 +1,41 @@
+import React, { useState } from "react";
 import { BillAsset } from "../../types"
+import { useRouter } from "next/router";
 
 interface Props {
   bill: BillAsset
 }
 
 export default function PaymentForm({ bill }: Props) {
+  const [billData, setBillData] = useState({
+    client: bill.client,
+    id_client: bill.id_client,
+    bill_number: bill.bill_number,
+    amount: bill.amount,
+    is_paid: true,
+    uuid: bill.uuid,
+    uuid_compl: ''
+  });
+  const [status, setstatus] = useState({onLoading: false, onError: false})
+  const router = useRouter()
+
+  const handleUpdateBill = async (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    setstatus({...status, onLoading: true})
+    await fetch(`/api/payment/${bill.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(billData)
+    }).then(() => {
+      setstatus({...status, onLoading: false})
+      router.push("/bills")
+    }).catch((e) => {
+      setstatus({onError: true, onLoading: false})
+    })
+  }
+  
   return (
     <>
-
       <div className="hidden sm:block" aria-hidden="true">
         <div className="py-5">
           <div className="border-t border-gray-200"></div>
@@ -79,6 +107,9 @@ export default function PaymentForm({ bill }: Props) {
                         name="name"
                         id="name"
                         className="mt-1 block w-2/3 text-gray-500 rounded-md border border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        onChange={(e) => {
+                          setBillData({...billData, uuid_compl: e.currentTarget.value})
+                        }}
                       />
                     </div>
                   </div>
@@ -87,8 +118,10 @@ export default function PaymentForm({ bill }: Props) {
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                   <button
                     className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    onClick={handleUpdateBill}
+                    disabled={status.onLoading}
                   >
-                    Save
+                    {status.onLoading ? 'Working...' : 'Save'}
                   </button>
                 </div>
               </div>
