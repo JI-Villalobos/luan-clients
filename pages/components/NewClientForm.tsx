@@ -29,7 +29,6 @@ export default function NewClientForm() {
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(body)
 			}).then(res => {
-				console.log(res)
 				setRequestStatus({
 					onError: false,
 					onLoading: false,
