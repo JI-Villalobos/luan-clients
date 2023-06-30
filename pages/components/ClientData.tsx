@@ -4,6 +4,7 @@ import { ClientProps, Considerations, Mails } from "../../types"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import ClientConsiderations from "./ClientConsiderations"
 import MailList from "./MailList"
+import Link from "next/link"
 
 interface Props {
   client: ClientProps,
@@ -26,11 +27,21 @@ export default function ClientData({ client, mails, considerations }: Props) {
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center justify-center">
       <div className="overflow-hidden bg-white shadow sm:rounded-lg">
-        <div className="px-4 py-5 sm:px-6">
-          <h3 className="text-lg font-medium leading-6 text-gray-900">Detalles del cliente</h3>
-          <p className="mt-1 max-w-2xl text-sm text-gray-500">Datos fiscales y consideraciones para facturación</p>
+        <div className="flex flex-row items-center justify-between w-2/3">
+          <div className="px-4 py-5 sm:px-6">
+            <h3 className="text-lg font-medium leading-6 text-gray-900">Detalles del cliente</h3>
+            <p className="mt-1 max-w-2xl text-sm text-gray-500">Datos fiscales y consideraciones para facturación</p>
+          </div>
+          <Link href={`/add-bill/${client.ID}`}>
+            <button 
+              type="button" 
+              className="w-20  mr-2 mb-2 items-center rounded-md border  bg-indigo-600 px-2 py-2 text-center text-sm font-medium text-white shadow-sm hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
+              +Factura
+            </button>
+          </Link>
         </div>
         <div className="border-t border-gray-200">
           <dl>
@@ -65,14 +76,14 @@ export default function ClientData({ client, mails, considerations }: Props) {
               <dt className="text-sm font-medium text-gray-500">RFC</dt>
               <div className="flex">
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{client?.rfc}</dd>
-                <CopyToClipboard 
+                <CopyToClipboard
                   text={client?.rfc}
-                  onCopy={() => temporalCopiedState(setCopiedR)}  
+                  onCopy={() => temporalCopiedState(setCopiedR)}
                 >
-                  <button 
+                  <button
                     className={
                       copiedR ? 'ml-1 w-10 rounded bg-green-700 text-white text-xs'
-                      : 'ml-1 w-10 rounded bg-indigo-600 text-white text-xs'
+                        : 'ml-1 w-10 rounded bg-indigo-600 text-white text-xs'
                     }
                   >
                     {
