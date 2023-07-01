@@ -34,7 +34,7 @@ export default function ClientData({ client, mails, considerations }: Props) {
             <h3 className="text-lg font-medium leading-6 text-gray-900">Detalles del cliente</h3>
             <p className="mt-1 max-w-2xl text-sm text-gray-500">Datos fiscales y consideraciones para facturación</p>
           </div>
-          <Link href={`/add-bill/${client.ID}`}>
+          <Link href={`/add-bill/${client?.ID}`}>
             <button 
               type="button" 
               className="w-20  mr-2 mb-2 items-center rounded-md border  bg-indigo-600 px-2 py-2 text-center text-sm font-medium text-white shadow-sm hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"

@@ -3,7 +3,6 @@ import { BillAsset } from "../types";
 import Header from "./components/Header";
 import BillContainer from "./containers/BillContainer";
 import { prisma } from "../lib";
-import Link from "next/link";
 import BackHome from "./components/BackHome";
 
 

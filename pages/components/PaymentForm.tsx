@@ -8,12 +8,12 @@ interface Props {
 
 export default function PaymentForm({ bill }: Props) {
   const [billData, setBillData] = useState({
-    client: bill.client,
-    id_client: bill.id_client,
-    bill_number: bill.bill_number,
-    amount: bill.amount,
+    client: bill?.client,
+    id_client: bill?.id_client,
+    bill_number: bill?.bill_number,
+    amount: bill?.amount,
     is_paid: true,
-    uuid: bill.uuid,
+    uuid: bill?.uuid,
     uuid_compl: ''
   });
   const [status, setstatus] = useState({onLoading: false, onError: false})
@@ -22,7 +22,7 @@ export default function PaymentForm({ bill }: Props) {
   const handleUpdateBill = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
     setstatus({...status, onLoading: true})
-    await fetch(`/api/payment/${bill.id}`, {
+    await fetch(`/api/payment/${bill?.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(billData)
@@ -63,7 +63,7 @@ export default function PaymentForm({ bill }: Props) {
                         id="name"
                         className="mt-1 block w-full rounded-md text-gray-500 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         readOnly
-                        value={bill.uuid}
+                        value={bill?.uuid}
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-4">
@@ -74,7 +74,7 @@ export default function PaymentForm({ bill }: Props) {
                         id="rfc"
                         className="mt-1 block w-1/3 rounded-md text-indigo-600 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         readOnly
-                        value={bill.client}  
+                        value={bill?.client}  
                       />
                     </div>
 
@@ -86,7 +86,7 @@ export default function PaymentForm({ bill }: Props) {
                         id="regimen"
                         className="mt-1 block w-1/3 text-center text-indigo-600 rounded-md border border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         readOnly
-                        value={bill.bill_number}
+                        value={bill?.bill_number}
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -97,7 +97,7 @@ export default function PaymentForm({ bill }: Props) {
                         id="postal-code"
                         className="mt-1 text-center text-indigo-600 block w-full rounded-md border border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         readOnly
-                        value={bill.amount}
+                        value={bill?.amount}
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-6">

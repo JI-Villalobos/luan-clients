@@ -8,8 +8,8 @@ type Props = {
 
 export default function NewBillForm({ client }: Props) {
   const [billData, setBillData] = useState({
-    client: client.name,
-    id_client: client.ID,
+    client: client?.name,
+    id_client: client?.ID,
     bill_number: 0,
     amount: 0,
     is_paid: false,
@@ -50,7 +50,7 @@ export default function NewBillForm({ client }: Props) {
                     id="rfc"
                     className="mt-1 block w-1/3 rounded-md text-indigo-600 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     readOnly
-                    value={client.name}
+                    value={client?.name}
                   />
                 </div>
 
